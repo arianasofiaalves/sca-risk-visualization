@@ -1,0 +1,12 @@
+[
+    {
+        "project": "async_flask",
+        "source_file": "data\\raw_requirements\\async_flask_requirements.txt",
+        "dependency_count": 3,
+        "dependencies": [
+            "flask",
+            "flask-socketio",
+            "simple-websocket"
+        ]
+    }
+]
