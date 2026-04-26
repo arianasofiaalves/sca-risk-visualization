@@ -8,5 +8,17 @@
             "flask-socketio",
             "simple-websocket"
         ]
+    },
+    {
+        "project": "fastapi",
+        "source_file": "data\\raw_requirements\\fastapi_requirements.txt",
+        "dependency_count": 5,
+        "dependencies": [
+            "annotated-doc",
+            "pydantic",
+            "starlette",
+            "typing-extensions",
+            "typing-inspection"
+        ]
     }
 ]
