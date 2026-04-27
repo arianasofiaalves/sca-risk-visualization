@@ -20,5 +20,18 @@
             "typing-extensions",
             "typing-inspection"
         ]
+    },
+    {
+        "project": "pipx",
+        "source_file": "data\\raw_requirements\\pipx_requirements.txt",
+        "dependency_count": 6,
+        "dependencies": [
+            "argcomplete",
+            "colorama",
+            "packaging",
+            "platformdirs",
+            "tomli",
+            "userpath"
+        ]
     }
 ]

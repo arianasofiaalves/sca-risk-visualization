@@ -1,0 +1,6 @@
+argcomplete>=1.9.4
+colorama>=0.4.4
+packaging>=20
+platformdirs>=2.1
+tomli
+userpath>=1.6
