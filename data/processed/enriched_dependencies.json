@@ -1,0 +1,73 @@
+[
+    {
+        "project": "async_flask",
+        "dependencies": [
+            {
+                "name": "flask",
+                "risk": "LOW"
+            },
+            {
+                "name": "flask-socketio",
+                "risk": "HIGH"
+            },
+            {
+                "name": "simple-websocket",
+                "risk": "MEDIUM"
+            }
+        ]
+    },
+    {
+        "project": "fastapi",
+        "dependencies": [
+            {
+                "name": "annotated-doc",
+                "risk": "HIGH"
+            },
+            {
+                "name": "pydantic",
+                "risk": "LOW"
+            },
+            {
+                "name": "starlette",
+                "risk": "LOW"
+            },
+            {
+                "name": "typing-extensions",
+                "risk": "HIGH"
+            },
+            {
+                "name": "typing-inspection",
+                "risk": "HIGH"
+            }
+        ]
+    },
+    {
+        "project": "pipx",
+        "dependencies": [
+            {
+                "name": "argcomplete",
+                "risk": "LOW"
+            },
+            {
+                "name": "colorama",
+                "risk": "LOW"
+            },
+            {
+                "name": "packaging",
+                "risk": "MEDIUM"
+            },
+            {
+                "name": "platformdirs",
+                "risk": "LOW"
+            },
+            {
+                "name": "tomli",
+                "risk": "LOW"
+            },
+            {
+                "name": "userpath",
+                "risk": "HIGH"
+            }
+        ]
+    }
+]
