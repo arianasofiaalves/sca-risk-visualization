@@ -1,0 +1,87 @@
+[
+    {
+        "project": "async_flask",
+        "dependencies": [
+            {
+                "name": "flask",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "flask-socketio",
+                "risk": "HIGH",
+                "risk_score": 3
+            },
+            {
+                "name": "simple-websocket",
+                "risk": "MEDIUM",
+                "risk_score": 2
+            }
+        ]
+    },
+    {
+        "project": "fastapi",
+        "dependencies": [
+            {
+                "name": "annotated-doc",
+                "risk": "HIGH",
+                "risk_score": 3
+            },
+            {
+                "name": "pydantic",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "starlette",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "typing-extensions",
+                "risk": "HIGH",
+                "risk_score": 3
+            },
+            {
+                "name": "typing-inspection",
+                "risk": "HIGH",
+                "risk_score": 3
+            }
+        ]
+    },
+    {
+        "project": "pipx",
+        "dependencies": [
+            {
+                "name": "argcomplete",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "colorama",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "packaging",
+                "risk": "MEDIUM",
+                "risk_score": 2
+            },
+            {
+                "name": "platformdirs",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "tomli",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "userpath",
+                "risk": "HIGH",
+                "risk_score": 3
+            }
+        ]
+    }
+]
