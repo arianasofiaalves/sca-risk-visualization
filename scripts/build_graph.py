@@ -47,24 +47,23 @@ def main():
         else:
             node_colors.append(RISK_COLORS.get(risk, "lightgray"))
 
-    plt.figure(figsize=(14, 9))
+    plt.figure(figsize=(18, 12))
 
-    pos = nx.spring_layout(graph, seed=42, k=0.8)
+    pos = nx.spring_layout(graph, seed=42, k=1.8)
 
     nx.draw(
         graph,
         pos,
         with_labels=True,
         node_color=node_colors,
-        node_size=2500,
-        font_size=8,
+        node_size=3200,
+        font_size=9,
         font_weight="bold",
         arrows=True,
         edge_color="gray"
     )
 
     plt.title("Dependency Risk Graph", fontsize=16)
-    plt.tight_layout()
     plt.savefig(OUTPUT_FILE, dpi=300)
     plt.close()
 
