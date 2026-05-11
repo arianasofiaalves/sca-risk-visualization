@@ -1,0 +1,32 @@
+{
+    "total_projects_analyzed": 3,
+    "total_dependencies": 14,
+    "average_dependencies_per_project": 4.67,
+    "risk_distribution": {
+        "LOW": 8,
+        "MEDIUM": 4,
+        "HIGH": 2
+    },
+    "top_dependencies": [
+        {
+            "name": "flask",
+            "count": 1
+        },
+        {
+            "name": "flask-socketio",
+            "count": 1
+        },
+        {
+            "name": "simple-websocket",
+            "count": 1
+        },
+        {
+            "name": "annotated-doc",
+            "count": 1
+        },
+        {
+            "name": "pydantic",
+            "count": 1
+        }
+    ]
+}

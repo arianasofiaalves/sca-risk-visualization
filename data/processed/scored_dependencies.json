@@ -4,18 +4,18 @@
         "dependencies": [
             {
                 "name": "flask",
-                "risk": "LOW",
-                "risk_score": 1
-            },
-            {
-                "name": "flask-socketio",
                 "risk": "HIGH",
                 "risk_score": 3
             },
             {
+                "name": "flask-socketio",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
                 "name": "simple-websocket",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "LOW",
+                "risk_score": 1
             }
         ]
     },
@@ -24,8 +24,8 @@
         "dependencies": [
             {
                 "name": "annotated-doc",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "MEDIUM",
+                "risk_score": 2
             },
             {
                 "name": "pydantic",
@@ -34,18 +34,18 @@
             },
             {
                 "name": "starlette",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "MEDIUM",
+                "risk_score": 2
             },
             {
                 "name": "typing-extensions",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "MEDIUM",
+                "risk_score": 2
             },
             {
                 "name": "typing-inspection",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "MEDIUM",
+                "risk_score": 2
             }
         ]
     },
@@ -64,8 +64,8 @@
             },
             {
                 "name": "packaging",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "LOW",
+                "risk_score": 1
             },
             {
                 "name": "platformdirs",
@@ -74,13 +74,13 @@
             },
             {
                 "name": "tomli",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "HIGH",
+                "risk_score": 3
             },
             {
                 "name": "userpath",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1
             }
         ]
     }

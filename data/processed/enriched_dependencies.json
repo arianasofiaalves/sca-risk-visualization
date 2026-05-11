@@ -4,15 +4,15 @@
         "dependencies": [
             {
                 "name": "flask",
-                "risk": "LOW"
-            },
-            {
-                "name": "flask-socketio",
                 "risk": "HIGH"
             },
             {
+                "name": "flask-socketio",
+                "risk": "LOW"
+            },
+            {
                 "name": "simple-websocket",
-                "risk": "MEDIUM"
+                "risk": "LOW"
             }
         ]
     },
@@ -21,7 +21,7 @@
         "dependencies": [
             {
                 "name": "annotated-doc",
-                "risk": "HIGH"
+                "risk": "MEDIUM"
             },
             {
                 "name": "pydantic",
@@ -29,15 +29,15 @@
             },
             {
                 "name": "starlette",
-                "risk": "LOW"
+                "risk": "MEDIUM"
             },
             {
                 "name": "typing-extensions",
-                "risk": "HIGH"
+                "risk": "MEDIUM"
             },
             {
                 "name": "typing-inspection",
-                "risk": "HIGH"
+                "risk": "MEDIUM"
             }
         ]
     },
@@ -54,7 +54,7 @@
             },
             {
                 "name": "packaging",
-                "risk": "MEDIUM"
+                "risk": "LOW"
             },
             {
                 "name": "platformdirs",
@@ -62,11 +62,11 @@
             },
             {
                 "name": "tomli",
-                "risk": "LOW"
+                "risk": "HIGH"
             },
             {
                 "name": "userpath",
-                "risk": "HIGH"
+                "risk": "LOW"
             }
         ]
     }
