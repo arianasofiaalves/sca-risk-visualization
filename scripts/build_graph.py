@@ -24,47 +24,58 @@ def main():
         data = json.load(file)
 
     graph = nx.DiGraph()
-    node_colors = []
+    node_colors = {}
+    positions = {}
 
-    for project in data:
+    y_gap = 4
+    x_project = 0
+    x_dependency = 4
+
+    for project_index, project in enumerate(data):
         project_name = project["project"]
-        graph.add_node(project_name, node_type="project", risk="PROJECT")
+        project_y = -project_index * y_gap
 
-        for dependency in project["dependencies"]:
+        graph.add_node(project_name)
+        positions[project_name] = (x_project, project_y)
+        node_colors[project_name] = "lightblue"
+
+        dependencies = project["dependencies"]
+
+        for dep_index, dependency in enumerate(dependencies):
             dep_name = dependency["name"]
             risk = dependency["risk"]
+
             label = f"{dep_name}\n({risk})"
 
-            graph.add_node(label, node_type="dependency", risk=risk)
+            # Spread dependencies vertically around their project
+            dep_y = project_y + (len(dependencies) / 2) - dep_index
+
+            graph.add_node(label)
             graph.add_edge(project_name, label)
 
-    for node in graph.nodes(data=True):
-        node_type = node[1].get("node_type")
-        risk = node[1].get("risk")
+            positions[label] = (x_dependency, dep_y)
+            node_colors[label] = RISK_COLORS.get(risk, "lightgray")
 
-        if node_type == "project":
-            node_colors.append("lightblue")
-        else:
-            node_colors.append(RISK_COLORS.get(risk, "lightgray"))
+    colors = [node_colors[node] for node in graph.nodes()]
 
-    plt.figure(figsize=(18, 12))
-
-    pos = nx.spring_layout(graph, seed=42, k=1.8)
+    plt.figure(figsize=(18, 10))
 
     nx.draw(
         graph,
-        pos,
+        positions,
         with_labels=True,
-        node_color=node_colors,
-        node_size=3200,
-        font_size=9,
+        node_color=colors,
+        node_size=2800,
+        font_size=8,
         font_weight="bold",
         arrows=True,
-        edge_color="gray"
+        edge_color="gray",
+        arrowsize=15
     )
 
-    plt.title("Dependency Risk Graph", fontsize=16)
-    plt.savefig(OUTPUT_FILE, dpi=300)
+    plt.title("Dependency Risk Graph by Project", fontsize=16)
+    plt.axis("off")
+    plt.savefig(OUTPUT_FILE, dpi=300, bbox_inches="tight")
     plt.close()
 
     print(f"[OK] Dependency graph saved to {OUTPUT_FILE}")
