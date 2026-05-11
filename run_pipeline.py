@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 
 SCRIPTS = [
@@ -14,7 +15,7 @@ def run_script(script_path):
     print(f"\n[RUNNING] {script_path}")
 
     result = subprocess.run(
-        ["python", script_path],
+        [sys.executable, script_path],
         capture_output=True,
         text=True
     )
@@ -24,6 +25,9 @@ def run_script(script_path):
     if result.stderr:
         print("[ERROR]")
         print(result.stderr)
+
+    if result.returncode != 0:
+        raise RuntimeError(f"Pipeline stopped because {script_path} failed.")
 
 
 def main():

@@ -3,8 +3,8 @@
     "total_dependencies": 14,
     "average_dependencies_per_project": 4.67,
     "risk_distribution": {
-        "LOW": 8,
-        "MEDIUM": 4,
+        "LOW": 5,
+        "MEDIUM": 7,
         "HIGH": 2
     },
     "top_dependencies": [

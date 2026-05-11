@@ -4,18 +4,18 @@
         "dependencies": [
             {
                 "name": "flask",
+                "risk": "LOW",
+                "risk_score": 1
+            },
+            {
+                "name": "flask-socketio",
                 "risk": "HIGH",
                 "risk_score": 3
             },
             {
-                "name": "flask-socketio",
-                "risk": "LOW",
-                "risk_score": 1
-            },
-            {
                 "name": "simple-websocket",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "MEDIUM",
+                "risk_score": 2
             }
         ]
     },
@@ -29,8 +29,8 @@
             },
             {
                 "name": "pydantic",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "HIGH",
+                "risk_score": 3
             },
             {
                 "name": "starlette",
@@ -44,8 +44,8 @@
             },
             {
                 "name": "typing-inspection",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "LOW",
+                "risk_score": 1
             }
         ]
     },
@@ -59,13 +59,13 @@
             },
             {
                 "name": "colorama",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "MEDIUM",
+                "risk_score": 2
             },
             {
                 "name": "packaging",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "MEDIUM",
+                "risk_score": 2
             },
             {
                 "name": "platformdirs",
@@ -74,13 +74,13 @@
             },
             {
                 "name": "tomli",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1
             },
             {
                 "name": "userpath",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "MEDIUM",
+                "risk_score": 2
             }
         ]
     }
