@@ -161,10 +161,11 @@ def main():
     nx.draw_networkx_edges(
         graph,
         positions,
-        edge_color="gray",
+        edge_color="dimgray",
         arrows=True,
-        arrowsize=8,
-        alpha=0.22,
+        arrowsize=14,
+        width=2.8,
+        alpha=0.75,
     )
 
     nx.draw_networkx_nodes(
