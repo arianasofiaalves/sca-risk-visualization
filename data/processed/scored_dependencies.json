@@ -14,8 +14,8 @@
             },
             {
                 "name": "simple-websocket",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "HIGH",
+                "risk_score": 3
             }
         ]
     },
@@ -24,23 +24,23 @@
         "dependencies": [
             {
                 "name": "annotated-doc",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "LOW",
+                "risk_score": 1
             },
             {
                 "name": "pydantic",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1
             },
             {
                 "name": "starlette",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "LOW",
+                "risk_score": 1
             },
             {
                 "name": "typing-extensions",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "HIGH",
+                "risk_score": 3
             },
             {
                 "name": "typing-inspection",
@@ -54,18 +54,18 @@
         "dependencies": [
             {
                 "name": "argcomplete",
+                "risk": "HIGH",
+                "risk_score": 3
+            },
+            {
+                "name": "colorama",
                 "risk": "LOW",
                 "risk_score": 1
             },
             {
-                "name": "colorama",
-                "risk": "MEDIUM",
-                "risk_score": 2
-            },
-            {
                 "name": "packaging",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "HIGH",
+                "risk_score": 3
             },
             {
                 "name": "platformdirs",
@@ -74,8 +74,8 @@
             },
             {
                 "name": "tomli",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "MEDIUM",
+                "risk_score": 2
             },
             {
                 "name": "userpath",

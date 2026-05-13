@@ -12,7 +12,7 @@
             },
             {
                 "name": "simple-websocket",
-                "risk": "MEDIUM"
+                "risk": "HIGH"
             }
         ]
     },
@@ -21,19 +21,19 @@
         "dependencies": [
             {
                 "name": "annotated-doc",
-                "risk": "MEDIUM"
+                "risk": "LOW"
             },
             {
                 "name": "pydantic",
-                "risk": "HIGH"
+                "risk": "LOW"
             },
             {
                 "name": "starlette",
-                "risk": "MEDIUM"
+                "risk": "LOW"
             },
             {
                 "name": "typing-extensions",
-                "risk": "MEDIUM"
+                "risk": "HIGH"
             },
             {
                 "name": "typing-inspection",
@@ -46,15 +46,15 @@
         "dependencies": [
             {
                 "name": "argcomplete",
-                "risk": "LOW"
+                "risk": "HIGH"
             },
             {
                 "name": "colorama",
-                "risk": "MEDIUM"
+                "risk": "LOW"
             },
             {
                 "name": "packaging",
-                "risk": "MEDIUM"
+                "risk": "HIGH"
             },
             {
                 "name": "platformdirs",
@@ -62,7 +62,7 @@
             },
             {
                 "name": "tomli",
-                "risk": "LOW"
+                "risk": "MEDIUM"
             },
             {
                 "name": "userpath",

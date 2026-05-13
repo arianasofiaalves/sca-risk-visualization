@@ -8,14 +8,77 @@ import networkx as nx
 
 INPUT_FILE = Path("data/processed/scored_dependencies.json")
 OUTPUT_DIR = Path("output")
-OUTPUT_FILE = OUTPUT_DIR / "dependency_graph.png"
+OUTPUT_FILE = OUTPUT_DIR / "risk_grouped_dependency_graph.png"
 
 
 RISK_COLORS = {
-    "LOW": "lightgreen",
+    "HIGH": "salmon",
     "MEDIUM": "gold",
-    "HIGH": "salmon"
+    "LOW": "lightgreen"
 }
+
+RISK_SHAPES = {
+    "HIGH": "s",
+    "MEDIUM": "D",
+    "LOW": "h"
+}
+
+
+def shorten_label(text, max_len=13):
+    return text if len(text) <= max_len else text[:max_len - 3] + "..."
+
+
+def place_group(center_x, center_y, risk, dependencies):
+    """
+    Places dependencies around a project while preserving a general direction:
+    HIGH to the left, MEDIUM below, LOW to the right.
+    Dependencies are spread in a small fan to avoid overlap.
+    """
+
+    count = len(dependencies)
+    positions = []
+
+    if count == 0:
+        return positions
+
+    if risk == "HIGH":
+        base_x = center_x - 2.6
+        base_y = center_y
+        spread_x = 0.0
+        spread_y = 1.0
+
+    elif risk == "MEDIUM":
+        base_x = center_x
+        base_y = center_y - 2.4
+        spread_x = 1.1
+        spread_y = 0.55
+
+    else:  # LOW
+        base_x = center_x + 2.6
+        base_y = center_y
+        spread_x = 0.75
+        spread_y = 1.0
+
+    middle = (count - 1) / 2
+
+    for i, dependency in enumerate(dependencies):
+        offset = i - middle
+
+        if risk == "HIGH":
+            x = base_x
+            y = base_y - offset * spread_y
+
+        elif risk == "MEDIUM":
+            x = base_x + offset * spread_x
+            y = base_y - abs(offset) * spread_y
+
+        else:  # LOW
+            x = base_x + abs(offset) * spread_x
+            y = base_y - offset * spread_y
+
+        positions.append((dependency, x, y))
+
+    return positions
 
 
 def main():
@@ -26,80 +89,114 @@ def main():
 
     graph = nx.DiGraph()
     positions = {}
-    node_colors = {}
 
-    # Fixed centers for each project cluster
+    project_nodes = []
+    risk_nodes = {
+        "HIGH": [],
+        "MEDIUM": [],
+        "LOW": []
+    }
+
+    # Clusters closer together to reduce blank space
     cluster_centers = [
-        (-5, 4),
-        (5, 4),
-        (0, -4),
-        (-5, -12),
-        (5, -12),
+        (-4.8, 3.2),
+        (4.8, 3.2),
+        (0, -2.3),
+        (-4.8, -7.8),
+        (4.8, -7.8)
     ]
 
-    dependency_radius = 2.4
-
     for project_index, project in enumerate(data):
-        project_name = project["project"]
+        project_label = shorten_label(project["project"])
         center_x, center_y = cluster_centers[project_index]
 
-        graph.add_node(project_name)
-        positions[project_name] = (center_x, center_y)
-        node_colors[project_name] = "lightblue"
+        graph.add_node(project_label)
+        project_nodes.append(project_label)
+        positions[project_label] = (center_x, center_y)
 
-        dependencies = project["dependencies"]
-        total_deps = len(dependencies)
+        grouped = {
+            "HIGH": [],
+            "MEDIUM": [],
+            "LOW": []
+        }
 
-        for dep_index, dependency in enumerate(dependencies):
-            dep_name = dependency["name"]
-            risk = dependency["risk"]
-            label = f"{dep_name}\n({risk})"
+        for dependency in project["dependencies"]:
+            grouped[dependency["risk"]].append(dependency)
 
-            angle = 2 * math.pi * dep_index / total_deps
-            dep_x = center_x + dependency_radius * math.cos(angle)
-            dep_y = center_y + dependency_radius * math.sin(angle)
+        for risk in ["HIGH", "MEDIUM", "LOW"]:
+            placed_dependencies = place_group(
+                center_x,
+                center_y,
+                risk,
+                grouped[risk]
+            )
 
-            graph.add_node(label)
-            graph.add_edge(project_name, label)
+            for dependency, dep_x, dep_y in placed_dependencies:
+                dep_label = f"{shorten_label(dependency['name'])}\n{risk}"
 
-            positions[label] = (dep_x, dep_y)
-            node_colors[label] = RISK_COLORS.get(risk, "lightgray")
+                graph.add_node(dep_label)
+                graph.add_edge(project_label, dep_label)
 
-    colors = [node_colors[node] for node in graph.nodes()]
+                positions[dep_label] = (dep_x, dep_y)
+                risk_nodes[risk].append(dep_label)
 
-    plt.figure(figsize=(16, 12))
+    plt.figure(figsize=(15, 9))
 
     nx.draw_networkx_edges(
         graph,
         positions,
         edge_color="gray",
         arrows=True,
-        arrowsize=12,
-        alpha=0.45
+        arrowsize=8,
+        alpha=0.3
     )
 
     nx.draw_networkx_nodes(
         graph,
         positions,
-        node_color=colors,
-        node_size=2300,
+        nodelist=project_nodes,
+        node_color="lightblue",
+        node_shape="o",
+        node_size=2600,
         edgecolors="black",
-        linewidths=0.6
+        linewidths=0.7,
+        label="Project"
     )
+
+    for risk in ["HIGH", "MEDIUM", "LOW"]:
+        nx.draw_networkx_nodes(
+            graph,
+            positions,
+            nodelist=risk_nodes[risk],
+            node_color=RISK_COLORS[risk],
+            node_shape=RISK_SHAPES[risk],
+            node_size=2300,
+            edgecolors="black",
+            linewidths=0.7,
+            label=f"{risk.title()} risk"
+        )
 
     nx.draw_networkx_labels(
         graph,
         positions,
-        font_size=7,
+        font_size=6,
         font_weight="bold"
     )
 
-    plt.title("Dependency Risk Graph by Project Cluster", fontsize=16)
+    plt.title("Risk-Oriented Dependency Graph by Project", fontsize=16)
+
+    plt.legend(
+    loc="lower right",
+    fontsize=6,
+    frameon=False,
+    markerscale=0.4
+    )
+
     plt.axis("off")
     plt.savefig(OUTPUT_FILE, dpi=300, bbox_inches="tight")
     plt.close()
 
-    print(f"[OK] Dependency graph saved to {OUTPUT_FILE}")
+    print(f"[OK] Risk-grouped dependency graph saved to {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
