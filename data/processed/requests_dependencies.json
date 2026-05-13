@@ -1,0 +1,27 @@
+{
+    "project": "requests",
+    "source_file": "data\\raw_requirements\\requests_requirements.txt",
+    "dependency_count": 4,
+    "dependencies": [
+        {
+            "name": "charset_normalizer",
+            "operator": ">=",
+            "version": "2,<4"
+        },
+        {
+            "name": "idna",
+            "operator": ">=",
+            "version": "2.5,<4"
+        },
+        {
+            "name": "urllib3",
+            "operator": ">=",
+            "version": "1.26,<3"
+        },
+        {
+            "name": "certifi",
+            "operator": ">=",
+            "version": "2023.5.7"
+        }
+    ]
+}

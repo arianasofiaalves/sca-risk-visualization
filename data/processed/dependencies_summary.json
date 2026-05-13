@@ -22,6 +22,28 @@
         ]
     },
     {
+        "project": "django",
+        "source_file": "data\\raw_requirements\\django_requirements.txt",
+        "dependency_count": 3,
+        "dependencies": [
+            {
+                "name": "asgiref",
+                "operator": ">=",
+                "version": "3.9.1"
+            },
+            {
+                "name": "sqlparse",
+                "operator": ">=",
+                "version": "0.5.0"
+            },
+            {
+                "name": "tzdata",
+                "operator": null,
+                "version": null
+            }
+        ]
+    },
+    {
         "project": "fastapi",
         "source_file": "data\\raw_requirements\\fastapi_requirements.txt",
         "dependency_count": 5,
@@ -87,6 +109,33 @@
                 "name": "userpath",
                 "operator": ">=",
                 "version": "1.6"
+            }
+        ]
+    },
+    {
+        "project": "requests",
+        "source_file": "data\\raw_requirements\\requests_requirements.txt",
+        "dependency_count": 4,
+        "dependencies": [
+            {
+                "name": "charset_normalizer",
+                "operator": ">=",
+                "version": "2,<4"
+            },
+            {
+                "name": "idna",
+                "operator": ">=",
+                "version": "2.5,<4"
+            },
+            {
+                "name": "urllib3",
+                "operator": ">=",
+                "version": "1.26,<3"
+            },
+            {
+                "name": "certifi",
+                "operator": ">=",
+                "version": "2023.5.7"
             }
         ]
     }

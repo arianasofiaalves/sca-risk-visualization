@@ -1,0 +1,22 @@
+{
+    "project": "django",
+    "source_file": "data\\raw_requirements\\django_requirements.txt",
+    "dependency_count": 3,
+    "dependencies": [
+        {
+            "name": "asgiref",
+            "operator": ">=",
+            "version": "3.9.1"
+        },
+        {
+            "name": "sqlparse",
+            "operator": ">=",
+            "version": "0.5.0"
+        },
+        {
+            "name": "tzdata",
+            "operator": null,
+            "version": null
+        }
+    ]
+}

@@ -1,11 +1,11 @@
 {
-    "total_projects_analyzed": 3,
-    "total_dependencies": 14,
-    "average_dependencies_per_project": 4.67,
+    "total_projects_analyzed": 5,
+    "total_dependencies": 21,
+    "average_dependencies_per_project": 4.2,
     "risk_distribution": {
-        "LOW": 11,
+        "LOW": 14,
         "MEDIUM": 0,
-        "HIGH": 3
+        "HIGH": 7
     },
     "top_dependencies": [
         {
@@ -21,11 +21,11 @@
             "count": 1
         },
         {
-            "name": "starlette",
+            "name": "asgiref",
             "count": 1
         },
         {
-            "name": "pydantic",
+            "name": "sqlparse",
             "count": 1
         }
     ]

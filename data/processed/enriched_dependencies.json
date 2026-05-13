@@ -36,6 +36,45 @@
         ]
     },
     {
+        "project": "django",
+        "dependencies": [
+            {
+                "name": "asgiref",
+                "operator": ">=",
+                "version": "3.9.1",
+                "risk": "LOW",
+                "vulnerability_count": 0,
+                "vulnerability_ids": [],
+                "severity_labels": []
+            },
+            {
+                "name": "sqlparse",
+                "operator": ">=",
+                "version": "0.5.0",
+                "risk": "HIGH",
+                "vulnerability_count": 6,
+                "vulnerability_ids": [
+                    "GHSA-27jp-wm6q-gp25",
+                    "GHSA-2m57-hf25-phgg",
+                    "GHSA-p5w8-wqhj-9hhf",
+                    "GHSA-rrm6-wvj7-cwh2",
+                    "PYSEC-2021-333",
+                    "PYSEC-2023-87"
+                ],
+                "severity_labels": []
+            },
+            {
+                "name": "tzdata",
+                "operator": null,
+                "version": null,
+                "risk": "LOW",
+                "vulnerability_count": 0,
+                "vulnerability_ids": [],
+                "severity_labels": []
+            }
+        ]
+    },
+    {
         "project": "fastapi",
         "dependencies": [
             {
@@ -152,6 +191,88 @@
                 "risk": "LOW",
                 "vulnerability_count": 0,
                 "vulnerability_ids": [],
+                "severity_labels": []
+            }
+        ]
+    },
+    {
+        "project": "requests",
+        "dependencies": [
+            {
+                "name": "charset_normalizer",
+                "operator": ">=",
+                "version": "2,<4",
+                "risk": "LOW",
+                "vulnerability_count": 0,
+                "vulnerability_ids": [],
+                "severity_labels": []
+            },
+            {
+                "name": "idna",
+                "operator": ">=",
+                "version": "2.5,<4",
+                "risk": "HIGH",
+                "vulnerability_count": 2,
+                "vulnerability_ids": [
+                    "GHSA-jjg7-2v4v-x38h",
+                    "PYSEC-2024-60"
+                ],
+                "severity_labels": []
+            },
+            {
+                "name": "urllib3",
+                "operator": ">=",
+                "version": "1.26,<3",
+                "risk": "HIGH",
+                "vulnerability_count": 30,
+                "vulnerability_ids": [
+                    "GHSA-2xpw-w6gg-jr37",
+                    "GHSA-34jh-p97f-mpxf",
+                    "GHSA-38jv-5279-wg99",
+                    "GHSA-48p4-8xcf-vxj5",
+                    "GHSA-5phf-pp7p-vc2r",
+                    "GHSA-g4mx-q9vg-27p4",
+                    "GHSA-gm62-xv2j-4w53",
+                    "GHSA-gwvm-45gx-3cf8",
+                    "GHSA-hmv2-79q8-fv6g",
+                    "GHSA-mf9v-mfxr-j63j",
+                    "GHSA-mh33-7rrq-662w",
+                    "GHSA-pq67-6m6q-mj2v",
+                    "GHSA-q2q7-5pp4-w6pg",
+                    "GHSA-qccp-gfcp-xxvc",
+                    "GHSA-r64q-w8jr-g9qp",
+                    "GHSA-v4w5-p2hg-8fh6",
+                    "GHSA-v845-jxx5-vc9f",
+                    "GHSA-wqvq-5m8c-6g24",
+                    "GHSA-www2-v7xj-xrc6",
+                    "PYSEC-2017-98",
+                    "PYSEC-2018-32",
+                    "PYSEC-2019-132",
+                    "PYSEC-2019-133",
+                    "PYSEC-2020-148",
+                    "PYSEC-2020-149",
+                    "PYSEC-2021-108",
+                    "PYSEC-2021-59",
+                    "PYSEC-2023-192",
+                    "PYSEC-2023-207",
+                    "PYSEC-2023-212"
+                ],
+                "severity_labels": []
+            },
+            {
+                "name": "certifi",
+                "operator": ">=",
+                "version": "2023.5.7",
+                "risk": "HIGH",
+                "vulnerability_count": 6,
+                "vulnerability_ids": [
+                    "GHSA-248v-346w-9cwc",
+                    "GHSA-43fp-rhv2-5gv8",
+                    "GHSA-xqr8-7jwr-rhp7",
+                    "PYSEC-2022-42986",
+                    "PYSEC-2023-135",
+                    "PYSEC-2024-230"
+                ],
                 "severity_labels": []
             }
         ]
