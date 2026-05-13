@@ -35,13 +35,17 @@ def extract_severity_labels(vulnerabilities):
 
 
 def classify_risk(vulnerability_count, severity_labels):
+
     if vulnerability_count == 0:
         return "LOW"
 
-    if "CRITICAL" in severity_labels or "HIGH" in severity_labels:
+    if "CRITICAL" in severity_labels:
         return "HIGH"
 
-    if vulnerability_count >= 2:
+    if "HIGH" in severity_labels:
+        return "HIGH"
+
+    if vulnerability_count >= 3:
         return "HIGH"
 
     return "MEDIUM"

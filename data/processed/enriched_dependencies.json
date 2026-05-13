@@ -211,7 +211,7 @@
                 "name": "idna",
                 "operator": ">=",
                 "version": "2.5,<4",
-                "risk": "HIGH",
+                "risk": "MEDIUM",
                 "vulnerability_count": 2,
                 "vulnerability_ids": [
                     "GHSA-jjg7-2v4v-x38h",

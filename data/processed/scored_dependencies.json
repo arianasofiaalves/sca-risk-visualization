@@ -229,8 +229,8 @@
                 "name": "idna",
                 "operator": ">=",
                 "version": "2.5,<4",
-                "risk": "HIGH",
-                "risk_score": 3,
+                "risk": "MEDIUM",
+                "risk_score": 2,
                 "vulnerability_count": 2,
                 "vulnerability_ids": [
                     "GHSA-jjg7-2v4v-x38h",

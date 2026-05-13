@@ -106,9 +106,11 @@ def main():
     }
 
     cluster_centers_by_project = {
-        "async_flask": (-5.4, 3.5),
-        "fastapi": (5.4, 3.5),
-        "pipx": (0, -3.2),
+    "async_flask": (-8, 4.5),
+    "fastapi": (8, 4.5),
+    "pipx": (0, -5),
+    "requests": (-4, -1),
+    "django": (4, -1),
     }
 
     label_map = {}
