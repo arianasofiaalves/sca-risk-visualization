@@ -4,9 +4,21 @@
         "source_file": "data\\raw_requirements\\async_flask_requirements.txt",
         "dependency_count": 3,
         "dependencies": [
-            "flask",
-            "flask-socketio",
-            "simple-websocket"
+            {
+                "name": "flask",
+                "operator": "==",
+                "version": "2.1.1"
+            },
+            {
+                "name": "flask-socketio",
+                "operator": "==",
+                "version": "5.1.1"
+            },
+            {
+                "name": "simple-websocket",
+                "operator": "==",
+                "version": "0.5.1"
+            }
         ]
     },
     {
@@ -14,11 +26,31 @@
         "source_file": "data\\raw_requirements\\fastapi_requirements.txt",
         "dependency_count": 5,
         "dependencies": [
-            "annotated-doc",
-            "pydantic",
-            "starlette",
-            "typing-extensions",
-            "typing-inspection"
+            {
+                "name": "starlette",
+                "operator": ">=",
+                "version": "0.46.0"
+            },
+            {
+                "name": "pydantic",
+                "operator": ">=",
+                "version": "2.9.0"
+            },
+            {
+                "name": "typing-extensions",
+                "operator": ">=",
+                "version": "4.8.0"
+            },
+            {
+                "name": "typing-inspection",
+                "operator": ">=",
+                "version": "0.4.2"
+            },
+            {
+                "name": "annotated-doc",
+                "operator": ">=",
+                "version": "0.0.2"
+            }
         ]
     },
     {
@@ -26,12 +58,36 @@
         "source_file": "data\\raw_requirements\\pipx_requirements.txt",
         "dependency_count": 6,
         "dependencies": [
-            "argcomplete",
-            "colorama",
-            "packaging",
-            "platformdirs",
-            "tomli",
-            "userpath"
+            {
+                "name": "argcomplete",
+                "operator": ">=",
+                "version": "1.9.4"
+            },
+            {
+                "name": "colorama",
+                "operator": ">=",
+                "version": "0.4.4"
+            },
+            {
+                "name": "packaging",
+                "operator": ">=",
+                "version": "20"
+            },
+            {
+                "name": "platformdirs",
+                "operator": ">=",
+                "version": "2.1"
+            },
+            {
+                "name": "tomli",
+                "operator": null,
+                "version": null
+            },
+            {
+                "name": "userpath",
+                "operator": ">=",
+                "version": "1.6"
+            }
         ]
     }
 ]

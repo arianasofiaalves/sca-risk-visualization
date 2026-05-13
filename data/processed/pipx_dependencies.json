@@ -3,11 +3,35 @@
     "source_file": "data\\raw_requirements\\pipx_requirements.txt",
     "dependency_count": 6,
     "dependencies": [
-        "argcomplete",
-        "colorama",
-        "packaging",
-        "platformdirs",
-        "tomli",
-        "userpath"
+        {
+            "name": "argcomplete",
+            "operator": ">=",
+            "version": "1.9.4"
+        },
+        {
+            "name": "colorama",
+            "operator": ">=",
+            "version": "0.4.4"
+        },
+        {
+            "name": "packaging",
+            "operator": ">=",
+            "version": "20"
+        },
+        {
+            "name": "platformdirs",
+            "operator": ">=",
+            "version": "2.1"
+        },
+        {
+            "name": "tomli",
+            "operator": null,
+            "version": null
+        },
+        {
+            "name": "userpath",
+            "operator": ">=",
+            "version": "1.6"
+        }
     ]
 }

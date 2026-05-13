@@ -4,33 +4,37 @@
         "dependencies": [
             {
                 "name": "flask",
+                "operator": "==",
+                "version": "2.1.1",
                 "risk": "HIGH",
                 "risk_score": 3,
-                "vulnerability_count": 8,
+                "vulnerability_count": 3,
                 "vulnerability_ids": [
-                    "GHSA-4grg-w6v8-c28g",
-                    "GHSA-562c-5r94-xh97",
-                    "GHSA-5wv5-4vpf-pj6m",
                     "GHSA-68rp-wp8r-4726",
                     "GHSA-m2qf-hxjv-5gpq",
-                    "PYSEC-2018-66",
-                    "PYSEC-2019-179",
                     "PYSEC-2023-62"
-                ]
+                ],
+                "severity_labels": []
             },
             {
                 "name": "flask-socketio",
+                "operator": "==",
+                "version": "5.1.1",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             },
             {
                 "name": "simple-websocket",
+                "operator": "==",
+                "version": "0.5.1",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             }
         ]
     },
@@ -38,25 +42,9 @@
         "project": "fastapi",
         "dependencies": [
             {
-                "name": "annotated-doc",
-                "risk": "LOW",
-                "risk_score": 1,
-                "vulnerability_count": 0,
-                "vulnerability_ids": []
-            },
-            {
-                "name": "pydantic",
-                "risk": "HIGH",
-                "risk_score": 3,
-                "vulnerability_count": 3,
-                "vulnerability_ids": [
-                    "GHSA-5jqp-qgf6-3pvh",
-                    "GHSA-mr82-8j83-vxmv",
-                    "PYSEC-2021-47"
-                ]
-            },
-            {
                 "name": "starlette",
+                "operator": ">=",
+                "version": "0.46.0",
                 "risk": "HIGH",
                 "risk_score": 3,
                 "vulnerability_count": 7,
@@ -68,21 +56,52 @@
                     "GHSA-v5gw-mw7f-84px",
                     "PYSEC-2023-48",
                     "PYSEC-2023-83"
-                ]
+                ],
+                "severity_labels": []
+            },
+            {
+                "name": "pydantic",
+                "operator": ">=",
+                "version": "2.9.0",
+                "risk": "HIGH",
+                "risk_score": 3,
+                "vulnerability_count": 3,
+                "vulnerability_ids": [
+                    "GHSA-5jqp-qgf6-3pvh",
+                    "GHSA-mr82-8j83-vxmv",
+                    "PYSEC-2021-47"
+                ],
+                "severity_labels": []
             },
             {
                 "name": "typing-extensions",
+                "operator": ">=",
+                "version": "4.8.0",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             },
             {
                 "name": "typing-inspection",
+                "operator": ">=",
+                "version": "0.4.2",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
+            },
+            {
+                "name": "annotated-doc",
+                "operator": ">=",
+                "version": "0.0.2",
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": [],
+                "severity_labels": []
             }
         ]
     },
@@ -91,45 +110,63 @@
         "dependencies": [
             {
                 "name": "argcomplete",
+                "operator": ">=",
+                "version": "1.9.4",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             },
             {
                 "name": "colorama",
+                "operator": ">=",
+                "version": "0.4.4",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             },
             {
                 "name": "packaging",
+                "operator": ">=",
+                "version": "20",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             },
             {
                 "name": "platformdirs",
+                "operator": ">=",
+                "version": "2.1",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             },
             {
                 "name": "tomli",
+                "operator": null,
+                "version": null,
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             },
             {
                 "name": "userpath",
+                "operator": ">=",
+                "version": "1.6",
                 "risk": "LOW",
                 "risk_score": 1,
                 "vulnerability_count": 0,
-                "vulnerability_ids": []
+                "vulnerability_ids": [],
+                "severity_labels": []
             }
         ]
     }

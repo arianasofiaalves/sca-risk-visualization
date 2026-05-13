@@ -3,8 +3,20 @@
     "source_file": "data\\raw_requirements\\async_flask_requirements.txt",
     "dependency_count": 3,
     "dependencies": [
-        "flask",
-        "flask-socketio",
-        "simple-websocket"
+        {
+            "name": "flask",
+            "operator": "==",
+            "version": "2.1.1"
+        },
+        {
+            "name": "flask-socketio",
+            "operator": "==",
+            "version": "5.1.1"
+        },
+        {
+            "name": "simple-websocket",
+            "operator": "==",
+            "version": "0.5.1"
+        }
     ]
 }

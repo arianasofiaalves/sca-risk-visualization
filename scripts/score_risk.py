@@ -24,17 +24,17 @@ def main():
 
         for dependency in project["dependencies"]:
             risk = dependency["risk"]
-            risk_score = RISK_SCORES.get(risk, 0)
 
-            scored_dependency = {
+            scored_dependencies.append({
                 "name": dependency["name"],
+                "operator": dependency.get("operator"),
+                "version": dependency.get("version"),
                 "risk": risk,
-                "risk_score": risk_score,
+                "risk_score": RISK_SCORES.get(risk, 0),
                 "vulnerability_count": dependency.get("vulnerability_count", 0),
-                "vulnerability_ids": dependency.get("vulnerability_ids", [])
-            }
-
-            scored_dependencies.append(scored_dependency)
+                "vulnerability_ids": dependency.get("vulnerability_ids", []),
+                "severity_labels": dependency.get("severity_labels", [])
+            })
 
         scored_data.append({
             "project": project["project"],
