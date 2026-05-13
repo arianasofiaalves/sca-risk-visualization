@@ -1,9 +1,11 @@
 import json
 import math
+import textwrap
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import networkx as nx
+from matplotlib.lines import Line2D
 
 
 INPUT_FILE = Path("data/processed/scored_dependencies.json")
@@ -24,61 +26,67 @@ RISK_SHAPES = {
 }
 
 
-def shorten_label(text, max_len=13):
-    return text if len(text) <= max_len else text[:max_len - 3] + "..."
+def format_label(text, width=14):
+    """
+    Formats labels without breaking words into isolated letters.
+    For package names with hyphens, the label may break at the hyphen.
+    """
+    text = text.replace("", "")
+
+    if "-" in text and len(text) > width:
+        parts = text.split("-")
+        return "\n".join(parts)
+
+    return "\n".join(
+        textwrap.wrap(
+            text,
+            width=width,
+            break_long_words=False,
+            break_on_hyphens=False
+        )
+    )
 
 
-def place_group(center_x, center_y, risk, dependencies):
+def place_dependencies(center_x, center_y, risk, dependencies):
     """
-    Places dependencies around a project while preserving a general direction:
-    HIGH to the left, MEDIUM below, LOW to the right.
-    Dependencies are spread in a small fan to avoid overlap.
+    Places dependencies around the project at a similar distance,
+    while preserving a general risk direction:
+    HIGH = left, MEDIUM = bottom, LOW = right.
     """
+
+    if not dependencies:
+        return []
 
     count = len(dependencies)
-    positions = []
 
-    if count == 0:
-        return positions
+    # Slightly increase radius when there are more dependencies
+    radius = 3.0 + max(0, count - 2) * 0.25
 
-    if risk == "HIGH":
-        base_x = center_x - 2.6
-        base_y = center_y
-        spread_x = 0.0
-        spread_y = 1.0
+    angle_ranges = {
+        "HIGH": (145, 215),      # left side
+        "MEDIUM": (225, 315),    # bottom side
+        "LOW": (-55, 55)         # right side
+    }
 
-    elif risk == "MEDIUM":
-        base_x = center_x
-        base_y = center_y - 2.4
-        spread_x = 1.1
-        spread_y = 0.55
+    start_angle, end_angle = angle_ranges[risk]
 
-    else:  # LOW
-        base_x = center_x + 2.6
-        base_y = center_y
-        spread_x = 0.75
-        spread_y = 1.0
+    if count == 1:
+        angles = [(start_angle + end_angle) / 2]
+    else:
+        angles = [
+            start_angle + i * (end_angle - start_angle) / (count - 1)
+            for i in range(count)
+        ]
 
-    middle = (count - 1) / 2
+    placed = []
 
-    for i, dependency in enumerate(dependencies):
-        offset = i - middle
+    for dependency, angle in zip(dependencies, angles):
+        radians = math.radians(angle)
+        x = center_x + radius * math.cos(radians)
+        y = center_y + radius * math.sin(radians)
+        placed.append((dependency, x, y))
 
-        if risk == "HIGH":
-            x = base_x
-            y = base_y - offset * spread_y
-
-        elif risk == "MEDIUM":
-            x = base_x + offset * spread_x
-            y = base_y - abs(offset) * spread_y
-
-        else:  # LOW
-            x = base_x + abs(offset) * spread_x
-            y = base_y - offset * spread_y
-
-        positions.append((dependency, x, y))
-
-    return positions
+    return placed
 
 
 def main():
@@ -97,22 +105,24 @@ def main():
         "LOW": []
     }
 
-    # Clusters closer together to reduce blank space
-    cluster_centers = [
-        (-4.8, 3.2),
-        (4.8, 3.2),
-        (0, -2.3),
-        (-4.8, -7.8),
-        (4.8, -7.8)
-    ]
+    cluster_centers_by_project = {
+        "async_flask": (-5.4, 3.5),
+        "fastapi": (5.4, 3.5),
+        "pipx": (0, -3.2),
+    }
 
-    for project_index, project in enumerate(data):
-        project_label = shorten_label(project["project"])
-        center_x, center_y = cluster_centers[project_index]
+    label_map = {}
+
+    for project in data:
+        project_name = project["project"]
+        project_label = format_label(project_name, width=14)
+
+        center_x, center_y = cluster_centers_by_project.get(project_name, (0, 0))
 
         graph.add_node(project_label)
-        project_nodes.append(project_label)
         positions[project_label] = (center_x, center_y)
+        project_nodes.append(project_label)
+        label_map[project_label] = project_label
 
         grouped = {
             "HIGH": [],
@@ -124,7 +134,7 @@ def main():
             grouped[dependency["risk"]].append(dependency)
 
         for risk in ["HIGH", "MEDIUM", "LOW"]:
-            placed_dependencies = place_group(
+            placed_dependencies = place_dependencies(
                 center_x,
                 center_y,
                 risk,
@@ -132,15 +142,19 @@ def main():
             )
 
             for dependency, dep_x, dep_y in placed_dependencies:
-                dep_label = f"{shorten_label(dependency['name'])}\n{risk}"
+                dep_name = dependency["name"]
+                dep_label = format_label(dep_name, width=14)
 
-                graph.add_node(dep_label)
-                graph.add_edge(project_label, dep_label)
+                node_id = f"{project_name}:{dep_name}:{risk}"
 
-                positions[dep_label] = (dep_x, dep_y)
-                risk_nodes[risk].append(dep_label)
+                graph.add_node(node_id)
+                graph.add_edge(project_label, node_id)
 
-    plt.figure(figsize=(15, 9))
+                positions[node_id] = (dep_x, dep_y)
+                risk_nodes[risk].append(node_id)
+                label_map[node_id] = dep_label
+
+    plt.figure(figsize=(17, 10))
 
     nx.draw_networkx_edges(
         graph,
@@ -148,7 +162,7 @@ def main():
         edge_color="gray",
         arrows=True,
         arrowsize=8,
-        alpha=0.3
+        alpha=0.25
     )
 
     nx.draw_networkx_nodes(
@@ -157,10 +171,9 @@ def main():
         nodelist=project_nodes,
         node_color="lightblue",
         node_shape="o",
-        node_size=2600,
+        node_size=3400,
         edgecolors="black",
-        linewidths=0.7,
-        label="Project"
+        linewidths=0.7
     )
 
     for risk in ["HIGH", "MEDIUM", "LOW"]:
@@ -170,26 +183,68 @@ def main():
             nodelist=risk_nodes[risk],
             node_color=RISK_COLORS[risk],
             node_shape=RISK_SHAPES[risk],
-            node_size=2300,
+            node_size=3600,
             edgecolors="black",
-            linewidths=0.7,
-            label=f"{risk.title()} risk"
+            linewidths=0.7
         )
 
     nx.draw_networkx_labels(
         graph,
         positions,
-        font_size=6,
+        labels=label_map,
+        font_size=5.4,
         font_weight="bold"
     )
+
+    legend_elements = [
+        Line2D(
+            [0], [0],
+            marker="o",
+            color="w",
+            label="Project",
+            markerfacecolor="lightblue",
+            markeredgecolor="black",
+            markersize=8
+        ),
+        Line2D(
+            [0], [0],
+            marker="s",
+            color="w",
+            label="High risk",
+            markerfacecolor=RISK_COLORS["HIGH"],
+            markeredgecolor="black",
+            markersize=8
+        ),
+        Line2D(
+            [0], [0],
+            marker="D",
+            color="w",
+            label="Medium risk",
+            markerfacecolor=RISK_COLORS["MEDIUM"],
+            markeredgecolor="black",
+            markersize=8
+        ),
+        Line2D(
+            [0], [0],
+            marker="h",
+            color="w",
+            label="Low risk",
+            markerfacecolor=RISK_COLORS["LOW"],
+            markeredgecolor="black",
+            markersize=8
+        ),
+    ]
 
     plt.title("Risk-Oriented Dependency Graph by Project", fontsize=16)
 
     plt.legend(
-    loc="lower right",
-    fontsize=6,
-    frameon=False,
-    markerscale=0.4
+        handles=legend_elements,
+        loc="lower right",
+        fontsize=8,
+        frameon=False,
+        labelspacing=0.6,
+        handletextpad=0.6,
+        borderpad=0.3
     )
 
     plt.axis("off")

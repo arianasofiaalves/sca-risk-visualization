@@ -4,18 +4,33 @@
         "dependencies": [
             {
                 "name": "flask",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "HIGH",
+                "risk_score": 3,
+                "vulnerability_count": 8,
+                "vulnerability_ids": [
+                    "GHSA-4grg-w6v8-c28g",
+                    "GHSA-562c-5r94-xh97",
+                    "GHSA-5wv5-4vpf-pj6m",
+                    "GHSA-68rp-wp8r-4726",
+                    "GHSA-m2qf-hxjv-5gpq",
+                    "PYSEC-2018-66",
+                    "PYSEC-2019-179",
+                    "PYSEC-2023-62"
+                ]
             },
             {
                 "name": "flask-socketio",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "simple-websocket",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             }
         ]
     },
@@ -25,27 +40,49 @@
             {
                 "name": "annotated-doc",
                 "risk": "LOW",
-                "risk_score": 1
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "pydantic",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "HIGH",
+                "risk_score": 3,
+                "vulnerability_count": 3,
+                "vulnerability_ids": [
+                    "GHSA-5jqp-qgf6-3pvh",
+                    "GHSA-mr82-8j83-vxmv",
+                    "PYSEC-2021-47"
+                ]
             },
             {
                 "name": "starlette",
-                "risk": "LOW",
-                "risk_score": 1
+                "risk": "HIGH",
+                "risk_score": 3,
+                "vulnerability_count": 7,
+                "vulnerability_ids": [
+                    "GHSA-2c2j-9gv5-cj73",
+                    "GHSA-74m5-2c7w-9w3x",
+                    "GHSA-7f5h-v6xp-fcq8",
+                    "GHSA-f96h-pmfr-66vw",
+                    "GHSA-v5gw-mw7f-84px",
+                    "PYSEC-2023-48",
+                    "PYSEC-2023-83"
+                ]
             },
             {
                 "name": "typing-extensions",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "typing-inspection",
                 "risk": "LOW",
-                "risk_score": 1
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             }
         ]
     },
@@ -54,33 +91,45 @@
         "dependencies": [
             {
                 "name": "argcomplete",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "colorama",
                 "risk": "LOW",
-                "risk_score": 1
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "packaging",
-                "risk": "HIGH",
-                "risk_score": 3
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "platformdirs",
                 "risk": "LOW",
-                "risk_score": 1
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "tomli",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             },
             {
                 "name": "userpath",
-                "risk": "MEDIUM",
-                "risk_score": 2
+                "risk": "LOW",
+                "risk_score": 1,
+                "vulnerability_count": 0,
+                "vulnerability_ids": []
             }
         ]
     }
